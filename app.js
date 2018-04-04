@@ -17,8 +17,9 @@ app.use(helmet());
 var mongoose = require('mongoose');
 // switch DB from Dev to Production
 // var mongoDB = 'mongodb://psyminshelf1:readbooksNOW@ds125628.mlab.com:25628/mybookshelf1';
-var mongoDB = 'mongodb://psyminshelf1:readbooksNOW@ds125628.mlab.com:25628/mybookshelf1';
 
+// For Production
+var mongoDB = process.env.MONGODB_URI || 'mongodb://psyminshelf1:readbooksNOW@ds125628.mlab.com:25628/mybookshelf1';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
